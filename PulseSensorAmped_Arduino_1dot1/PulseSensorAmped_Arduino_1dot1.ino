@@ -32,9 +32,7 @@ Tidied up inefficiencies since the last version.
 
 //  VARIABLES
 int pulsePin = 0;                 // Pulse Sensor purple wire connected to analog pin 0
-int blinkPin = 13;                // pin to blink led at each beat
-int fadePin = 5;                  // pin to do fancy classy fading blink at each beat
-int fadeRate = 0;                 // used to fade LED on with PWM on fadePin
+
 
 
 // these variables are volatile because they are used during the interrupt service routine!
@@ -46,8 +44,6 @@ volatile boolean QS = false;        // becomes true when Arduoino finds a beat.
 
 
 void setup(){
-  pinMode(blinkPin,OUTPUT);         // pin that will blink to your heartbeat!
-  pinMode(fadePin,OUTPUT);          // pin that will fade to your heartbeat!
   Serial.begin(115200);             // we agree to talk fast!
   interruptSetup();                 // sets up to read Pulse Sensor signal every 2mS 
    // UN-COMMENT THE NEXT LINE IF YOU ARE POWERING The Pulse Sensor AT LOW VOLTAGE, 
@@ -72,21 +68,7 @@ void loop(){
 }
 
 
-void ledFadeToBeat(){
-    fadeRate -= 15;                         //  set LED fade value
-    fadeRate = constrain(fadeRate,0,255);   //  keep LED fade value from going into negative numbers!
-    analogWrite(fadePin,fadeRate);          //  fade LED
-  }
-
-
 void sendDataToProcessing(char symbol, int data ){
     Serial.print(symbol);                // symbol prefix tells Processing what type of data is coming
     Serial.println(data);                // the data to send culminating in a carriage return
   }
-
-
-
-
-
-
-
