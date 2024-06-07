@@ -1,10 +1,5 @@
-#include <Adafruit_CircuitPlayground.h>
-#include <Adafruit_Circuit_Playground.h>
 
-#include <PulseSensorPlayground.h>
-
-
-/*m  Getting_BPM_to_Monitor prints the BPM to the Serial Monitor, using the least lines of code and PulseSensor Library.
+/*  Getting_BPM_to_Monitor prints the BPM to the Serial Monitor, using the least lines of code and PulseSensor Library.
  *  Tutorial Webpage: https://pulsesensor.com/pages/getting-advanced
  *
 --------Use This Sketch To------------------------------------------
