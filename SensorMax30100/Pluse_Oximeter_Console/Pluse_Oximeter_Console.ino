@@ -17,18 +17,19 @@ void onBeatDetected()
 void setup()
 {
   Serial.begin(115200);
+ 
 
   if (!pox.begin()) {
     Serial.println("FAILED");
     for (;;);
-  } else {
-    Serial.println("SUCCESS");
   }
+  else {
+   Serial.println("SUCCESS"); 
+  }
+  
   pox.setIRLedCurrent(MAX30100_LED_CURR_7_6MA);
-
   pox.setOnBeatDetectedCallback(onBeatDetected);
 }
-
 void loop()
 {
   pox.update();
